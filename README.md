@@ -52,4 +52,4 @@ Build out the following methods on the movie class
 + Movie#ratings
   + returns an array of all ratings for that movie
 + Movie#viewers
-  + should return all of the customers who have left ratings for that movie.
+  + should return all of the viewers who have left ratings for that movie.
