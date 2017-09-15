@@ -1,16 +1,10 @@
 # Object Relations Assessment
 
-For this assignment, we'll be building out Netflix! A viewer has left many ratings on movies, and a movie has been rated by many viewers.
+## Your Task
+
+For this challenge, we'll be building out Netflix! A Viewer has many Movies via their WatchListing. A Movie can appear on many Viewer's WatchListings.  A Viewer can assign a rating to a movie on their Watchlisting.
 
 As always, make sure to sketch out your domain and think about the single source of truth for your data.
-
-## Topics
-
-+ Classes vs Instances
-+ Variable Scope ( Class, Instance, Local )
-+ Object Relationships
-+ Arrays and Array Methods
-+ Class Methods
 
 ## Notes
 
@@ -18,38 +12,43 @@ Your goal is to build out all of the methods listed in the deliverables. Do your
 
 We've provided you with a console that you can use to test your code. To enter a console session, run `ruby tools/console.rb`. You'll be able to test out the methods that you write here.
 
-**To Submit** - once you've completed all the deliverables, please copy/paste your three class definitions into the `solution.rb`  file. Please don't submit the lab until we give you the signal.
+**To Submit** - once you've completed all the deliverables, please copy/paste your three class definitions into the `solution.rb` file. Please don't submit the lab until we give you the signal.
 
 ## Deliverables
 
-Build the following methods on the viewer class
+Implement all of the methods described below
+
+### VIEWER
+
 + Viewer.all
-  + should return all of the viewers
-+ Viewer.find_by_name(name)
-  + given a string of a full name, returns the first customer whose full name matches
-+ Viewer.find_all_by_first_name(name)
-  + given a string of a first name, returns an array containing all customers with that first name
-+ Viewer.all_names
-  + should return an array of all of the viewer full names
-+ Viewer#create_rating
-  + given a score and a movie, creates a new Rating and associates it with that viewer and that movie
+  + returns all of the viewers
++ Viewer#add_to_watchlist(movies)
+  + this method should receive an array of one or more movie instances and add them to the viewer's watchlisting
++ Viewer#rate_movie(movie, rating)
+  + given a movie on a viewer's watchlisting and a rating (a number between 1 and 5), assign the rating to the movie. Where should the rating that an individual viewer gives to an individual movie be stored?
 
-Build out the following methods on the Rating class
+### WATCHLISTING
 
-+ Rating.all
-  + returns all of the ratings
-+ Rating#viewer
-  + returns the viewer for that given rating
-+ Rating#movie
-  + returns the movie for that given rating
+_A Watchlisting object represents that an individual user has added a particular movie to their watchlist and rated it._
 
-Build out the following methods on the movie class
++ Watchlisting.all
+  + returns all of watchlistings
++ Watchlisting#viewer
+  + returns the viewer associated with this watchlisting
++ Watchlisting#movie
+  + returns the movie associated with this watchlisting
++ Watchlisting#rating
+  + returns the viewer's rating for the movie associated with this watchlisting
+
+### MOVIE 
 
 + Movie.all
   + returns an array of all movies
-+ Movie.find_by_title(title)
-  + given a string of movie title, returns the first movie that matches
-+ Movie#ratings
-  + returns an array of all ratings for that movie
++ Movie#watchlistings
+  + returns an array of all the watchlist objects that contain that movie
 + Movie#viewers
-  + should return all of the viewers who have left ratings for that movie.
+  + returns all of the viewers who added this movie to their watchlist
++ Movie#average_rating
+  + returns the average of all ratings across all viewers watchlist ratings
++ Movie.highest_rated
+  + should return the movie with the highest average rating across all the viewers watchlistings
